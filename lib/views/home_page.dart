@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:qrcode_tracing_user/views/scan_result.dart';
 import 'package:qrcode_tracing_user/widgets/drawer_widget.dart';
 import 'package:qrcode_tracing_user/widgets/text_widget.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final box = GetStorage();
   String qrCode = 'Unknown';
 
   Future<void> scanQRCode() async {
@@ -29,6 +32,10 @@ class _HomePageState extends State<HomePage> {
         this.qrCode = qrCode;
       });
       print(qrCode);
+
+      box.write('result', qrCode);
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => ResultPage()));
     } on PlatformException {
       qrCode = 'Failed to get platform version.';
     }
