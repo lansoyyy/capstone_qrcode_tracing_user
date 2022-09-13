@@ -199,8 +199,8 @@ class _LogInPageState extends State<LogInPage> {
                   onPressed: () {
                     if (box.read('username') == myUsername &&
                         box.read('password') == myPassword) {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => const HomePage()));
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => HomePage()));
                     } else {
                       showDialog(
                           context: context,

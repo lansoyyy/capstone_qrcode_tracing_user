@@ -40,6 +40,7 @@ dependencies:
   firebase_core:
   cloud_firestore:
   get_storage:
+  flutter_barcode_scanner:
 
 
 dev_dependencies:

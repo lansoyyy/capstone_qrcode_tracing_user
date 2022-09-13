@@ -1,10 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:qrcode_tracing_user/views/scan_result.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:qrcode_tracing_user/widgets/drawer_widget.dart';
 import 'package:qrcode_tracing_user/widgets/text_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String qrCode = 'Unknown';
+
+  Future<void> scanQRCode() async {
+    try {
+      final qrCode = await FlutterBarcodeScanner.scanBarcode(
+        '#ff6666',
+        'Cancel',
+        true,
+        ScanMode.QR,
+      );
+
+      if (!mounted) return;
+
+      setState(() {
+        this.qrCode = qrCode;
+      });
+      print(qrCode);
+    } on PlatformException {
+      qrCode = 'Failed to get platform version.';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +64,9 @@ class HomePage extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const ResultPage()));
+                scanQRCode();
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) => const ResultPage()));
               },
               child: Image.asset('assets/images/qr.png', height: 180),
             ),
