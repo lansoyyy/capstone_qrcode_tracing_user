@@ -34,6 +34,7 @@ class _HomePageState extends State<HomePage> {
       print(qrCode);
 
       box.write('result', qrCode);
+
       Navigator.of(context)
           .push(MaterialPageRoute(builder: (context) => ResultPage()));
     } on PlatformException {
