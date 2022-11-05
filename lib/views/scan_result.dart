@@ -75,7 +75,10 @@ class _ResultPageState extends State<ResultPage> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
                         child: ListTile(
-                          trailing: const Icon(Icons.check_box),
+                          trailing: const Icon(
+                            Icons.check_box,
+                            color: Colors.teal,
+                          ),
                           title: TextBold(
                               text: data.docs[index]['type'],
                               fontSize: 18,
@@ -89,7 +92,10 @@ class _ResultPageState extends State<ResultPage> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
                         child: ListTile(
-                          trailing: const Icon(Icons.check_box),
+                          trailing: const Icon(
+                            Icons.check_box,
+                            color: Colors.teal,
+                          ),
                           title: TextBold(
                               text: data.docs[index]['breed'],
                               fontSize: 18,
@@ -101,7 +107,10 @@ class _ResultPageState extends State<ResultPage> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
                         child: ListTile(
-                          trailing: const Icon(Icons.location_on_rounded),
+                          trailing: const Icon(
+                            Icons.location_on_rounded,
+                            color: Colors.green,
+                          ),
                           title: TextBold(
                               text: data.docs[index]['origin'],
                               fontSize: 18,
@@ -113,13 +122,33 @@ class _ResultPageState extends State<ResultPage> {
                       Padding(
                         padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
                         child: ListTile(
-                          trailing: const Icon(Icons.location_on_rounded),
+                          trailing: const Icon(
+                            Icons.my_location_rounded,
+                            color: Colors.red,
+                          ),
                           title: TextBold(
                               text: data.docs[index]['destination'],
                               fontSize: 18,
                               color: Colors.black),
                           subtitle: TextRegular(
                               text: 'Destination',
+                              fontSize: 12,
+                              color: Colors.grey),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                        child: ListTile(
+                          trailing: const Icon(
+                            Icons.flag,
+                            color: Colors.blue,
+                          ),
+                          title: TextBold(
+                              text: data.docs[index]['stopPlace'],
+                              fontSize: 18,
+                              color: Colors.black),
+                          subtitle: TextRegular(
+                              text: 'Stop-off Location',
                               fontSize: 12,
                               color: Colors.grey),
                         ),
