@@ -4,6 +4,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:qrcode_tracing_user/views/home_page.dart';
 import 'package:qrcode_tracing_user/widgets/text_widget.dart';
 
+import '../auth/login_page.dart';
+
 class MyDrawer extends StatefulWidget {
   const MyDrawer({Key? key}) : super(key: key);
 
@@ -52,7 +54,7 @@ class _MyDrawerState extends State<MyDrawer> {
               ),
               onTap: () {
                 Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                    MaterialPageRoute(builder: (context) => const HomePage()));
               },
             ),
             ListTile(
@@ -88,9 +90,9 @@ class _MyDrawerState extends State<MyDrawer> {
                             ),
                             FlatButton(
                               onPressed: () {
-                                // Navigator.of(context).pushReplacement(
-                                //     MaterialPageRoute(
-                                //         builder: (context) => LogInPage()));
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                        builder: (context) => LogInPage()));
                               },
                               child: const Text(
                                 'Continue',
