@@ -199,8 +199,8 @@ class _LogInPageState extends State<LogInPage> {
                   onPressed: () {
                     if (box.read('username') == myUsername &&
                         box.read('password') == myPassword) {
-                      Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                          builder: (context) => const HomePage()));
                     } else {
                       showDialog(
                           context: context,
@@ -216,7 +216,7 @@ class _LogInPageState extends State<LogInPage> {
                                   style: TextStyle(fontFamily: 'QRegular'),
                                 ),
                                 actions: <Widget>[
-                                  FlatButton(
+                                  MaterialButton(
                                     onPressed: () =>
                                         Navigator.of(context).pop(true),
                                     child: const Text(
@@ -509,7 +509,7 @@ class _LogInPageState extends State<LogInPage> {
                                                                 'QRegular'),
                                                       ),
                                                       actions: <Widget>[
-                                                        FlatButton(
+                                                        MaterialButton(
                                                           onPressed: () {
                                                             box.write(
                                                                 'name', name);

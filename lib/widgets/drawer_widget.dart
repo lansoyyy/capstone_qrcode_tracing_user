@@ -79,7 +79,7 @@ class _MyDrawerState extends State<MyDrawer> {
                             style: TextStyle(fontFamily: 'QRegular'),
                           ),
                           actions: <Widget>[
-                            FlatButton(
+                            MaterialButton(
                               onPressed: () => Navigator.of(context).pop(true),
                               child: const Text(
                                 'Close',
@@ -88,7 +88,7 @@ class _MyDrawerState extends State<MyDrawer> {
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                            FlatButton(
+                            MaterialButton(
                               onPressed: () {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
