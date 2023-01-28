@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:qrcode_tracing_user/services/cloud_function/add_history.dart';
 import 'package:qrcode_tracing_user/widgets/text_widget.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -14,7 +15,6 @@ class _ResultPageState extends State<ResultPage> {
   @override
   void initState() {
     super.initState();
-    print('asd' + box.read('result'));
   }
 
   @override
@@ -53,6 +53,15 @@ class _ResultPageState extends State<ResultPage> {
             return ListView.builder(
                 itemCount: snapshot.data?.size ?? 0,
                 itemBuilder: (context, index) {
+                  addHistory(
+                      box.read('username'),
+                      box.read('password'),
+                      data.docs[index]['type'],
+                      data.docs[index]['weight'],
+                      data.docs[index]['origin'],
+                      data.docs[index]['stopPlace'],
+                      data.docs[index]['destination'],
+                      data.docs[index]['breed']);
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -123,23 +132,6 @@ class _ResultPageState extends State<ResultPage> {
                         padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
                         child: ListTile(
                           trailing: const Icon(
-                            Icons.my_location_rounded,
-                            color: Colors.red,
-                          ),
-                          title: TextBold(
-                              text: data.docs[index]['destination'],
-                              fontSize: 18,
-                              color: Colors.black),
-                          subtitle: TextRegular(
-                              text: 'Destination',
-                              fontSize: 12,
-                              color: Colors.grey),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
-                        child: ListTile(
-                          trailing: const Icon(
                             Icons.flag,
                             color: Colors.blue,
                           ),
@@ -149,6 +141,23 @@ class _ResultPageState extends State<ResultPage> {
                               color: Colors.black),
                           subtitle: TextRegular(
                               text: 'Stop-off Location',
+                              fontSize: 12,
+                              color: Colors.grey),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(50, 10, 50, 10),
+                        child: ListTile(
+                          trailing: const Icon(
+                            Icons.my_location_rounded,
+                            color: Colors.red,
+                          ),
+                          title: TextBold(
+                              text: data.docs[index]['destination'],
+                              fontSize: 18,
+                              color: Colors.black),
+                          subtitle: TextRegular(
+                              text: 'Destination',
                               fontSize: 12,
                               color: Colors.grey),
                         ),
