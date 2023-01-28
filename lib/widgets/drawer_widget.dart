@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get_storage/get_storage.dart';
+import 'package:qrcode_tracing_user/views/history_page.dart';
 import 'package:qrcode_tracing_user/views/home_page.dart';
 import 'package:qrcode_tracing_user/widgets/text_widget.dart';
 
@@ -55,6 +56,18 @@ class _MyDrawerState extends State<MyDrawer> {
               onTap: () {
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => const HomePage()));
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.history),
+              title: TextRegular(
+                text: 'History',
+                fontSize: 12,
+                color: Colors.grey,
+              ),
+              onTap: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => HistoryPage()));
               },
             ),
             ListTile(
